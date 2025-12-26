@@ -11,7 +11,7 @@ pipeline {
     tools {
         jdk 'JDK21'  // Must match the JDK name configured in Jenkins Tools
     
-        dockerTool 'Default'
+        // dockerTool 'Default'
     }
     
     stages {
@@ -63,15 +63,15 @@ pipeline {
             }
         }
 
-        // Bonus Task 9: Docker Build Stage
-        stage('Docker Build') {
-            steps {
-                dir('starter_code') {
-                    echo "Building Docker image..."
-                    sh "docker build -t myapp:${env.BUILD_NUMBER} ."
-                }
-            }
-        }
+        // // Bonus Task 9: Docker Build Stage
+        // stage('Docker Build') {
+        //     steps {
+        //         dir('starter_code') {
+        //             echo "Building Docker image..."
+        //             sh "docker build -t myapp:${env.BUILD_NUMBER} ."
+        //         }
+        //     }
+        // }
     }
     
     
