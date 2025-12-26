@@ -33,8 +33,10 @@ pipeline {
                 // TODO: Complete this stage
                 // 1. Make mvnw executable: sh 'chmod +x mvnw'
                 // 2. Run Maven compile: sh './mvnw clean compile'
-                sh 'chmod +x mvnw'
-                sh './mvnw clean compile'
+                dir('starter_code') {
+                    sh 'chmod +x mvnw'
+                    sh './mvnw clean compile'
+                }
             }
         }
         
@@ -42,7 +44,9 @@ pipeline {
             steps {
                 // TODO: Complete this stage
                 // Run Maven tests: sh './mvnw test'
-                sh './mvnw test'
+                dir('starter_code') {
+                    sh './mvnw test'
+                }
             }
         }
         
@@ -50,7 +54,9 @@ pipeline {
             steps {
                 // TODO: Complete this stage
                 // Create JAR file: sh './mvnw package -DskipTests'
-                sh './mvnw package -DskipTests'
+                dir('starter_code') {
+                    sh './mvnw package -DskipTests'
+                }
             }
         }
     }
@@ -58,7 +64,7 @@ pipeline {
     post {
         success {
             echo '✅ Pipeline completed successfully!'
-            echo "Artifact: target/*.jar"
+            echo "Artifact: starter_code/target/*.jar"
         }
         failure {
             echo '❌ Pipeline failed! Check the logs above for errors.'
