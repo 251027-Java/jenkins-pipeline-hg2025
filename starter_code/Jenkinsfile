@@ -62,6 +62,17 @@ pipeline {
         }
     }
     
+    // Bonus Task 9: Docker Build Stage
+        stage('Docker Build') {
+            steps {
+                dir('starter_code') {
+                    echo "Building Docker image..."
+                    sh "docker build -t myapp:${env.BUILD_NUMBER} ."
+                }
+            }
+        }
+    }
+
     post {
         success {
             echo '✅ Pipeline completed successfully!'
