@@ -34,7 +34,7 @@ pipeline {
                 // 1. Make mvnw executable: sh 'chmod +x mvnw'
                 // 2. Run Maven compile: sh './mvnw clean compile'
                 dir('starter_code') {
-                    sh 'ls -la'
+                    //sh 'ls -la'
                     sh 'chmod +x mvnw'
                     sh './mvnw clean compile'
                 }
@@ -60,9 +60,8 @@ pipeline {
                 }
             }
         }
-    }
-    
-    // Bonus Task 9: Docker Build Stage
+
+        // Bonus Task 9: Docker Build Stage
         stage('Docker Build') {
             steps {
                 dir('starter_code') {
@@ -72,7 +71,8 @@ pipeline {
             }
         }
     }
-
+    
+    
     post {
         success {
             echo '✅ Pipeline completed successfully!'
