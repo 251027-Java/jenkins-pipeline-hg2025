@@ -18,10 +18,11 @@ class HelloControllerTest {
     void hello_ShouldReturnMessage() throws Exception {
         mockMvc.perform(get("/api/hello"))
                 .andExpect(status().isOk())
-                //.andExpect(jsonPath("$.message").value("Hello from Jenkins Demo App!"));
+                //Fixed Test back to original
+                .andExpect(jsonPath("$.message").value("Hello from Jenkins Demo App!"));
 
                 //Broken Test for Task 8
-                .andExpect(jsonPath("$.message").value("This text is wrong!"));
+                //.andExpect(jsonPath("$.message").value("This text is wrong!"));
     }
 
     @Test
